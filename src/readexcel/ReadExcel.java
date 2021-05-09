@@ -19,10 +19,11 @@ public class ReadExcel {
      * @throws java.io.IOException
      */
     public static void main(String[] args) throws IOException {
-        File excel = new File("C:\\Users\\Andy\\Desktop\\proyectos Telefonica\\documentacion general\\extracción.xlsx");
+        File excel = new File("C:\\Users\\Andy\\Documents\\NetBeansProjects\\Ex_Cmbs_Us_Mdt.xlsx");
 
         Lectorexcel ejecutar = new Lectorexcel();
-        ejecutar.LeerArchivo(excel);
+        //ejecutar.LeerArchivo(excel);
+        ejecutar.Leer_systems(excel);
        // System.out.println(ejecutar.getTransanccion().get(3));
 
     }

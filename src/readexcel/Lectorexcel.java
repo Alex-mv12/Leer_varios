@@ -27,10 +27,13 @@ public class Lectorexcel {
     public List<String> Fase = new ArrayList();
     public List<String> FechaIn = new ArrayList();
     public List<String> FechaFin = new ArrayList();
+    public List<String> Systems =  new ArrayList();
+    
     /*
     public List<String> Cnt_entradas = new ArrayList();
     public List<String> Conector_destino = new ArrayList();
     public List<String> Elemento_aprovis = new ArrayList();*/
+    public int n_systems ;
     public String contenidoCelda;
 
     public Row row;
@@ -38,6 +41,8 @@ public class Lectorexcel {
     y  en este caso desde las posicion 2
      */
     public int fila = 2;
+    private final int ctn_system_fila =8;
+    private final int ctn_system_colum = 1;
     
     
 
@@ -57,7 +62,7 @@ public class Lectorexcel {
                 row = sheet.getRow(fila);
                 //recoger los datos de la fila con sus respectivas columnas 
                 contenidoCelda = row.getCell(Colum).getStringCellValue();
-            System.out.println("celda: " + contenidoCelda);
+         //   System.out.println("celda: " + contenidoCelda);
 
                 switch (fila) {
                     case 2:
@@ -98,8 +103,27 @@ public class Lectorexcel {
             fila++;
 
         }
+        
 
     }
+    
+    public void Leer_systems (File filename) throws FileNotFoundException, IOException {
+        
+     //Cargamos el archivo con la ruta  en la cual esta 
+        FileInputStream ExcelFile = new FileInputStream(filename);
+        
+        // Generamos una referencia al Excel que vamos a leer
+        XSSFWorkbook WB = new XSSFWorkbook(ExcelFile);
+        // Le decimos la hoja que vamos a usar
+        XSSFSheet sheet = WB.getSheetAt(0);
+        //recorremos las 9filas  que vamos  usar 
+        
+         row = sheet.getRow(ctn_system_fila);
+                //recoger los datos de la fila con sus respectivas columnas 
+        n_systems  = (int) row.getCell(ctn_system_colum).getNumericCellValue();
+         
+        System.out.println("celda: " + n_systems);
+}
 
     public List<String> getUniverso() {
         return Universo;
@@ -195,6 +219,22 @@ public class Lectorexcel {
 
     public void setFila(int fila) {
         this.fila = fila;
+    }
+
+    public List<String> getSystems() {
+        return Systems;
+    }
+
+    public void setSystems(List<String> Systems) {
+        this.Systems = Systems;
+    }
+
+    public int getN_systems() {
+        return n_systems;
+    }
+
+    public void setN_systems(int n_systems) {
+        this.n_systems = n_systems;
     }
     
     
