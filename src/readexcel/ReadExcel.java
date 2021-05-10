@@ -24,6 +24,7 @@ public class ReadExcel {
         Lectorexcel ejecutar = new Lectorexcel();
         //ejecutar.LeerArchivo(excel);
         ejecutar.Leer_systems(excel);
+        System.out.println(ejecutar.getN_systems());
        // System.out.println(ejecutar.getTransanccion().get(3));
 
     }

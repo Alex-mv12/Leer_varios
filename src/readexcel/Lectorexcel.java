@@ -27,20 +27,22 @@ public class Lectorexcel {
     public List<String> Fase = new ArrayList();
     public List<String> FechaIn = new ArrayList();
     public List<String> FechaFin = new ArrayList();
-    public List<String> Systems =  new ArrayList();
+    public List<String> t_Systems =  new ArrayList();
     
     /*
     public List<String> Cnt_entradas = new ArrayList();
     public List<String> Conector_destino = new ArrayList();
     public List<String> Elemento_aprovis = new ArrayList();*/
     public int n_systems ;
-    public String contenidoCelda;
+    public String contenidoCelda, contenido_celda_sistemas;
+    
 
     public Row row;
     /*Le damos la posicion inicial desde donde empiece a recorrer cada fila entre 0-10 en el excel es de 1-11
     y  en este caso desde las posicion 2
      */
     public int fila = 2;
+    public int name_of_sys_row = 2;
     private final int ctn_system_fila =8;
     private final int ctn_system_colum = 1;
     
@@ -122,7 +124,17 @@ public class Lectorexcel {
                 //recoger los datos de la fila con sus respectivas columnas 
         n_systems  = (int) row.getCell(ctn_system_colum).getNumericCellValue();
          
-        System.out.println("celda: " + n_systems);
+      //  System.out.println("celda: " + n_systems);
+        
+        for (int i = 0; i < n_systems; i++) {
+            
+            row = sheet.getRow(name_of_sys_row);
+            
+            contenido_celda_sistemas  = row.getCell(6).getStringCellValue();
+            t_Systems.add(contenido_celda_sistemas);
+           name_of_sys_row++; 
+           //System.out.println("celda: " + contenido_celda_sistemas);
+        }
 }
 
     public List<String> getUniverso() {
@@ -222,11 +234,11 @@ public class Lectorexcel {
     }
 
     public List<String> getSystems() {
-        return Systems;
+        return t_Systems;
     }
 
     public void setSystems(List<String> Systems) {
-        this.Systems = Systems;
+        this.t_Systems = Systems;
     }
 
     public int getN_systems() {
