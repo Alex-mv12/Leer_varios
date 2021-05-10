@@ -28,8 +28,7 @@ public class Lectorexcel {
     public List<String> FechaIn = new ArrayList();
     public List<String> FechaFin = new ArrayList();
     public List<String> t_Systems =  new ArrayList();
-    
-    /*
+   /*
     public List<String> Cnt_entradas = new ArrayList();
     public List<String> Conector_destino = new ArrayList();
     public List<String> Elemento_aprovis = new ArrayList();*/
